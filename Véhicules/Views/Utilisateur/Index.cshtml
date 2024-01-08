@@ -1,0 +1,93 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+        Layout = null;
+
+}
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+<br>
+<br>
+<div class="cont">
+    <div class="form sign-in">
+        <h2>Welcome - SigmaCar</h2>
+
+   
+        @using (Html.BeginForm("Connexion", "Utilisateur", FormMethod.Post))
+        {
+            <label>
+                <span>Email</span>
+                <input type="email" name="email" />
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" name="motDePasse" />
+            </label>
+            <button type="submit" class="submit">Sign In</button>
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="error-message">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+            {
+                <p class="success-message">@ViewBag.SuccessMessage</p>
+            }
+        }
+    </div>
+
+
+    <div class="sub-cont">
+        <div class="img">
+            <div class="img__text m--up">
+
+                <h3>Vous n'avez pas de compte ? Veuillez vous inscrire !<h3>
+            </div>
+            <div class="img__text m--in">
+
+                <h3>Si vous avez déjà un compte, connectez-vous simplement.<h3>
+            </div>
+            <div class="img__btn">
+                <span class="m--up">Sign Up</span>
+                <span class="m--in">Sign In</span>
+            </div>
+        </div>
+        <div class="form sign-up">
+            <h2>Create your Account</h2>
+
+            @using (Html.BeginForm("Inscription", "Utilisateur", FormMethod.Post))
+            {
+                <label>
+                    <span>Name</span>
+                    <input type="text" name="nomUtilisateur" />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="motDePasse" />
+                </label>
+               @*  <label>
+                    <span>Confirm Password</span>
+                    <input type="password" name="confirmerMotDePasse" />
+                </label> *@
+                <button type="submit" class="submit">Sign Up</button>
+                @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                {
+                    <p class="success-message">@ViewBag.SuccessMessage</p>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.querySelector('.img__btn').addEventListener('click', function () {
+        document.querySelector('.cont').classList.toggle('s--signup');
+    });
+</script>

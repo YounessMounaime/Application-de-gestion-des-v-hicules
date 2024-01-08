@@ -1,0 +1,89 @@
+﻿@*
+*@
+@{
+}
+<style>
+    form.example input[type=number] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+    }
+
+    form.example button:hover {
+        background: #0b7dda;
+    }
+
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="d-flex justify-content-center mt-5">
+            <form asp-controller="Car" asp-action="Chercher" method="get" class="example text-center">
+                <div class="form-group d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm" id="carId" name="id" required>
+                    <button type="submit" class="btn btn-primary ml-2"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+             @foreach (var i in Model)
+            { 
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="card-img-top" src="@i.CarImgUrl" alt="Url erreur">
+                        <div class="card-body">
+                            <p class="card-text"> Marque :  @i.CarName </p>
+                            <p class="card-text">Modele : @i.CarModel  </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+
+                                    <a asp-controller="Car" asp-action="Details" asp-route-id="@i.CarId" class="btn btn-sm btn-outline-secondary">View</a>
+
+                                    <a asp-controller="Car" asp-action="Edit" asp-route-id="@i.CarId" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                          
+                                    
+                                    <a asp-controller="Car" asp-action="Delete" asp-route-id="@i.CarId" type="button" class="btn btn-sm btn-outline-secondary"
+                               onclick="return confirm('Voulez-vous vraiment supprimer cette voiture?');">Delete</a>
+
+                                </div>
+                                <small class="text-body-secondary"> @i.Price DH</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+       }
+        </div>
+    </div>
+</div>
+
+

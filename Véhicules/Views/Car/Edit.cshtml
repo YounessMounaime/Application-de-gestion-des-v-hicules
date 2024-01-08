@@ -1,0 +1,126 @@
+﻿@model Véhicules.Models.Car
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br>
+<img id="Forme_cre" src="~/img/update.webp" alt="Description de l'image" class="img-fluid" />
+<hr />
+
+<div class="row">
+
+        <div class="col-md-4 mx-auto">
+            <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+           <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                <label asp-for="CarId" class="control-label"></label>
+                <input asp-for="CarId" class="form-control" />
+                <span asp-validation-for="CarId" class="text-danger"></span>
+                    </div> 
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label asp-for="CarModel" class="control-label">Modele </label>
+                                <input asp-for="CarModel" class="form-control" />
+                                <span asp-validation-for="CarModel" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="CarName" class="control-label">Marquee  </label>
+                                <input asp-for="CarName" class="form-control" />
+                                <span asp-validation-for="CarName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label asp-for="Price" class="control-label">Prix </label>
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="CarImgUrl" class="control-label">Image</label>
+                                <input asp-for="CarImgUrl" class="form-control" />
+                                <span asp-validation-for="CarImgUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label asp-for="CarYear" class="control-label"> Année</label>
+                                    <input asp-for="CarYear" class="form-control" />
+                                    <span asp-validation-for="CarYear" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="PurchaseDate" class="control-label">Date </label>
+                                    <input asp-for="PurchaseDate" class="form-control" />
+                                    <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label asp-for="CreditCardNumber" class="control-label"> Numero de la carte </label>
+                                        <input asp-for="CreditCardNumber" class="form-control" />
+                                        <span asp-validation-for="CreditCardNumber" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label asp-for="OwnerEmail" class="control-label">Email </label>
+                                        <input asp-for="OwnerEmail" class="form-control" />
+                                        <span asp-validation-for="OwnerEmail" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label asp-for="OwnerPhone" class="control-label">Numéro téléphone</label>
+                                        <input asp-for="OwnerPhone" class="form-control" />
+                                        <span asp-validation-for="OwnerPhone" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label asp-for="CarWebsite" class="control-label">Website</label>
+                                        <input asp-for="CarWebsite" class="form-control" />
+                                        <span asp-validation-for="CarWebsite" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <br>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
